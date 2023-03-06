@@ -80,9 +80,7 @@ public class UngDungDocSo {
             default:
                 return "";
         }
-
     }
-
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -104,10 +102,10 @@ public class UngDungDocSo {
             int b = number % 100;
             int c = (number % 100) % 10;
             if (b > 0) {
-                String output = HangDonVi(a) + " HUNDRED AND " + HangChuc(b)  + HangDonVi(c);
+                String output = HangDonVi(a) + " HUNDRED AND " + HangChuc(b) + HangDonVi(c);
                 System.out.println(output);
             } else {
-                String output = HangDonVi(a) + " HUNDRED " + HangChuc(b)  + HangDonVi(c);
+                String output = HangDonVi(a) + " HUNDRED " + HangChuc(b) + HangDonVi(c);
                 System.out.println(output);
             }
         }
