@@ -5,11 +5,11 @@ public class TennisGame {
     public static String getScore(String player1, String player2, int score1, int score2) {
         String score = "";
         if (score1 == score2) {
-            isSamePoint(score1);
+            score = isSamePoint(score1);
         } else if (score1 >= 4 || score2 >= 4) {
-            over3Point(score1, score2);
+            score = over3Point(score1, score2);
         } else {
-            under3Point(score1, score2);
+            score = under3Point(score1, score2);
         }
         return score;
     }
@@ -74,5 +74,10 @@ public class TennisGame {
             }
         }
         return score;
+    }
+
+    public static void main(String[] args) {
+        String a = getScore("John", "Adam", 3, 1);
+        System.out.println(a);
     }
 }
