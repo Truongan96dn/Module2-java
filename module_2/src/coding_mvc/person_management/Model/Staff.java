@@ -1,4 +1,4 @@
-package coding_mvc.person_management.Model;
+package coding_mvc.person_management.model;
 
 public class Staff extends Person {
     protected String expertise;

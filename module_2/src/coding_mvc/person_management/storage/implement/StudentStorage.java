@@ -1,6 +1,6 @@
 package coding_mvc.person_management.storage.implement;
 
-import coding_mvc.person_management.Model.Student;
+import coding_mvc.person_management.model.Student;
 import coding_mvc.person_management.storage.IStudentSrore;
 
 import java.util.ArrayList;

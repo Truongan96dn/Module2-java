@@ -1,7 +1,7 @@
-package coding_mvc.person_management.View;
+package coding_mvc.person_management.view;
 
-import coding_mvc.person_management.Controller.StaffMenu;
-import coding_mvc.person_management.Controller.StudentMenu;
+import coding_mvc.person_management.controller.StaffMenu;
+import coding_mvc.person_management.controller.StudentMenu;
 
 import java.util.Scanner;
 

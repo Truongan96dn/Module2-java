@@ -1,4 +1,4 @@
-package coding_mvc.person_management.Controller;
+package coding_mvc.person_management.controller;
 
 import coding_mvc.person_management.service.implement.IStaffService;
 import coding_mvc.person_management.service.implement.StaffService;

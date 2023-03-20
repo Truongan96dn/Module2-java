@@ -1,4 +1,4 @@
-package coding_mvc.person_management.Model;
+package coding_mvc.person_management.model;
 
 public class Student extends Person {
     protected String classname;

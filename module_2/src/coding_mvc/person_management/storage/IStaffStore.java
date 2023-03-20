@@ -1,6 +1,6 @@
 package coding_mvc.person_management.storage;
 
-import coding_mvc.person_management.Model.Staff;
+import coding_mvc.person_management.model.Staff;
 
 import java.util.List;
 

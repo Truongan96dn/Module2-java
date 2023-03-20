@@ -1,6 +1,6 @@
 package coding_mvc.person_management.service.implement;
 
-import coding_mvc.person_management.Model.Staff;
+import coding_mvc.person_management.model.Staff;
 import coding_mvc.person_management.storage.IStaffStore;
 import coding_mvc.person_management.storage.implement.StaffStorage;
 
