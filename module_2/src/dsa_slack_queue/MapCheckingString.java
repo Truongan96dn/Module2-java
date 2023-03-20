@@ -1,7 +1,9 @@
 package dsa_slack_queue;
+
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+
 public class MapCheckingString {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
