@@ -13,7 +13,7 @@ public class IllegalTriangle {
         float b = Float.parseFloat(scanner.nextLine());
         System.out.println("Nhập cạnh c : ");
         float c = Float.parseFloat(scanner.nextLine());
-        if (a < 0 || b < 0 || c < 0 || a + b < c || a + c < b || b + c < a) {
+        if (a < 0 || b < 0 || c < 0 || a + b <= c || a + c <= b || b + c <- a) {
             System.out.println(" ba cạnh nhập vào không tạo ra tam giác ");
         } else {
             System.out.println("Ba cạnh nhập vào tạo ra tam giác ");
