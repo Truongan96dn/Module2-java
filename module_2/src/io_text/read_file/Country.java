@@ -1,4 +1,4 @@
-package io_text;
+package io_text.read_file;
 
 public class Country {
     private int id;

@@ -1,7 +1,6 @@
-package io_text;
+package io_text.read_file;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class ReadATextFile {
     public static void main(String[] args) throws FileNotFoundException {
