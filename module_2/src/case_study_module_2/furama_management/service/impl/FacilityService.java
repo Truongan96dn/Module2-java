@@ -1,14 +1,8 @@
 package case_study_module_2.furama_management.service.impl;
 
 import case_study_module_2.furama_management.controller.FuramaController;
-import case_study_module_2.furama_management.model.facility.Facility;
-import case_study_module_2.furama_management.model.facility.House;
-import case_study_module_2.furama_management.model.facility.Room;
-import case_study_module_2.furama_management.model.facility.Villa;
 import case_study_module_2.furama_management.service.IFacilityService;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityService implements IFacilityService {
@@ -16,6 +10,7 @@ public class FacilityService implements IFacilityService {
     static VillaService villaService = new VillaService();
     static RoomService roomService = new RoomService();
     static HouseService houseService = new HouseService();
+
     @Override
     public void display() {
         villaService.display();
