@@ -123,6 +123,7 @@ public class FuramaController {
                     break;
                 case 4:
                     displayMainMenu();
+                    flag = false;
                     break;
             }
         } while (flag);

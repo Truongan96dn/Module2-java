@@ -3,6 +3,7 @@ package case_study_module_2.furama_management.service.impl;
 import case_study_module_2.furama_management.model.facility.Room;
 import case_study_module_2.furama_management.model.facility.Villa;
 import case_study_module_2.furama_management.service.IRoomService;
+import case_study_module_2.furama_management.utils.FacilityValidate;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,16 +27,33 @@ public class RoomService implements IRoomService {
 
     @Override
     public void add() {
-        System.out.println("Input new service Name : ");
-        String serviceName = scanner.nextLine();
-        System.out.println("Input using area : ");
-        float usingArea = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input rental price:");
-        float rentalPrice = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input person limit");
-        int personLimit = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input type of rental ");
-        String typeofRental = scanner.nextLine();
+        String serviceName;
+        float usingArea;
+        float rentalPrice;
+        int personLimit;
+        String typeofRental;
+        do {
+            System.out.println("Input new Room service Name (SVRO-XXXX): ");
+            serviceName = scanner.nextLine();
+
+        } while (!FacilityValidate.checkRoomServiceName(serviceName));
+        do {
+            System.out.println("Input using area >30m2 : ");
+            usingArea = Integer.parseInt(scanner.nextLine());
+        } while (!FacilityValidate.checkUsingAreaAndPoolArea(usingArea));
+        do {
+            System.out.println("Input rental price (not minus number):");
+            rentalPrice = Integer.parseInt(scanner.nextLine());
+        } while (!FacilityValidate.checkRentalPrice(rentalPrice));
+        do {
+            System.out.println("Input person limit (over 1 person)");
+            personLimit = Integer.parseInt(scanner.nextLine());
+        } while (!FacilityValidate.checkPersonLimit(personLimit));
+
+        do {
+            System.out.println("Input type of rental ");
+            typeofRental = scanner.nextLine();
+        } while (!FacilityValidate.checkTypeOfRentalAndRoomStandard(typeofRental));
         System.out.println("Input new Free Service");
         String freeSer = scanner.nextLine();
         Room room = new Room(serviceName, usingArea, rentalPrice, personLimit, typeofRental, freeSer);

@@ -3,6 +3,7 @@ package case_study_module_2.furama_management.service.impl;
 import case_study_module_2.furama_management.model.facility.House;
 import case_study_module_2.furama_management.model.facility.Villa;
 import case_study_module_2.furama_management.service.IHouseService;
+import case_study_module_2.furama_management.utils.FacilityValidate;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,18 +27,36 @@ public class HouseService implements IHouseService {
 
     @Override
     public void add() {
-        System.out.println("Input new service Name : ");
-        String serviceName = scanner.nextLine();
-        System.out.println("Input using area : ");
-        float usingArea = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input rental price:");
-        float rentalPrice = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input person limit");
-        int personLimit = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input type of rental ");
-        String typeofRental = scanner.nextLine();
-        System.out.println("Input room standard");
-        String roomStandard = scanner.nextLine();
+        String serviceName;
+        float usingArea;
+        float rentalPrice;
+        int personLimit;
+        String typeofRental;
+        String roomStandard;
+        do {
+            System.out.println("Input new House service Name (SVHO-XXXX) : ");
+            serviceName = scanner.nextLine();
+        } while (!FacilityValidate.checkHouseServiceName(serviceName));
+        do {
+            System.out.println("Input using area >30m2 : ");
+            usingArea = Integer.parseInt(scanner.nextLine());
+        } while (!FacilityValidate.checkUsingAreaAndPoolArea(usingArea));
+        do {
+            System.out.println("Input rental price (not minus number):");
+            rentalPrice = Integer.parseInt(scanner.nextLine());
+        } while (!FacilityValidate.checkRentalPrice(rentalPrice));
+        do {
+            System.out.println("Input person limit (over 1 person)");
+            personLimit = Integer.parseInt(scanner.nextLine());
+        } while (!FacilityValidate.checkPersonLimit(personLimit));
+        do {
+            System.out.println("Input type of rental ");
+            typeofRental = scanner.nextLine();
+        } while (!FacilityValidate.checkTypeOfRentalAndRoomStandard(typeofRental));
+        do {
+            System.out.println("Input room standard");
+            roomStandard = scanner.nextLine();
+        } while (!FacilityValidate.checkTypeOfRentalAndRoomStandard(roomStandard));
         System.out.println("Input number of floor");
         int numberOfFloor = Integer.parseInt(scanner.nextLine());
         House house = new House(serviceName, usingArea, rentalPrice, personLimit, typeofRental, roomStandard, numberOfFloor);

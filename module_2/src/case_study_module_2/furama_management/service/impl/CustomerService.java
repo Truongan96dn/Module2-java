@@ -3,6 +3,7 @@ package case_study_module_2.furama_management.service.impl;
 import case_study_module_2.furama_management.controller.FuramaController;
 import case_study_module_2.furama_management.model.person.Customer;
 import case_study_module_2.furama_management.service.ICustomerService;
+import case_study_module_2.furama_management.utils.FacilityValidate;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void add() {
+        String dayOfBirth;
         System.out.println(" Input new customer ID");
         String customerID = scanner.nextLine();
         System.out.println("Input type of Customer");
@@ -34,8 +36,10 @@ public class CustomerService implements ICustomerService {
         String address = scanner.nextLine();
         System.out.println("Input Name ");
         String name = scanner.nextLine();
-        System.out.println("Input day of birth");
-        String dayOfBirth = scanner.nextLine();
+        do {
+            System.out.println("Input day of birth (dd/MM/YYYY)");
+            dayOfBirth = scanner.nextLine();
+        } while (!FacilityValidate.checkDateOfBirth(dayOfBirth));
         System.out.println("Input gender");
         String gender = scanner.nextLine();
         System.out.println("Input person ID");

@@ -3,6 +3,7 @@ package case_study_module_2.furama_management.service.impl;
 import case_study_module_2.furama_management.controller.FuramaController;
 import case_study_module_2.furama_management.model.person.Employee;
 import case_study_module_2.furama_management.service.IEmployeeService;
+import case_study_module_2.furama_management.utils.FacilityValidate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +12,21 @@ import java.util.Scanner;
 public class EmployeeService implements IEmployeeService {
     Scanner scanner = new Scanner(System.in);
     static List<Employee> employeeArrayList = new ArrayList<>();
+
     static {
-    employeeArrayList.add(new Employee("An","01/02/1996","Nam","23421","01234","hotruongandn@gmail.com","123","DH","Manager",7000));
-}
+        employeeArrayList.add(new Employee("An", "01/02/1996", "Nam", "23421", "01234", "hotruongandn@gmail.com", "123", "DH", "Manager", 7000));
+    }
 
     @Override
     public void display() {
-        for (Employee e: employeeArrayList) {
+        for (Employee e : employeeArrayList) {
             System.out.println(e);
         }
     }
 
     @Override
     public void add() {
+        String dayOfBirth;
         System.out.println(" Input new employee ID");
         String staffId = scanner.nextLine();
         System.out.println("Input education");
@@ -34,8 +37,10 @@ public class EmployeeService implements IEmployeeService {
         int salary = Integer.parseInt(scanner.nextLine());
         System.out.println("Input Name ");
         String name = scanner.nextLine();
-        System.out.println("Input day of birth");
-        String dayOfBirth = scanner.nextLine();
+        do {
+            System.out.println("Input day of birth (dd/MM/YYYY)");
+            dayOfBirth = scanner.nextLine();
+        } while (!FacilityValidate.checkDateOfBirth(dayOfBirth));
         System.out.println("Input gender");
         String gender = scanner.nextLine();
         System.out.println("Input person ID");
@@ -44,7 +49,7 @@ public class EmployeeService implements IEmployeeService {
         String phoneNumb = scanner.nextLine();
         System.out.println("Input email");
         String email = scanner.nextLine();
-        Employee employee = new Employee(name,dayOfBirth,gender,personId,phoneNumb,email,staffId,education,position,salary);
+        Employee employee = new Employee(name, dayOfBirth, gender, personId, phoneNumb, email, staffId, education, position, salary);
         employeeArrayList.add(employee);
     }
 
@@ -53,22 +58,22 @@ public class EmployeeService implements IEmployeeService {
         System.out.println("input Employee ID need to change :");
         String id = scanner.nextLine();
         for (int i = 0; i < employeeArrayList.size(); i++) {
-            if(id.equals(employeeArrayList.get(i).getStaffID())){
+            if (id.equals(employeeArrayList.get(i).getStaffID())) {
 
-                do{
-                    System.out.println("Choose information need to change :"+
-                            "\n 1. Education "+
-                            "\n 2. Position "+
-                            "\n 3. Salary "+
-                            "\n 4. Name "+
-                            "\n 5. Day of Birth "+
-                            "\n 6. Gender "+
-                            "\n 7. Person ID "+
-                            "\n 8. Phone number "+
-                            "\n 9. Email "+
+                do {
+                    System.out.println("Choose information need to change :" +
+                            "\n 1. Education " +
+                            "\n 2. Position " +
+                            "\n 3. Salary " +
+                            "\n 4. Name " +
+                            "\n 5. Day of Birth " +
+                            "\n 6. Gender " +
+                            "\n 7. Person ID " +
+                            "\n 8. Phone number " +
+                            "\n 9. Email " +
                             "\n 10. Return Employee Menu");
                     int choose = Integer.parseInt(scanner.nextLine());
-                    switch (choose){
+                    switch (choose) {
                         case 1:
                             System.out.println("Input Education need to change :");
                             String edu = scanner.nextLine();
@@ -125,7 +130,7 @@ public class EmployeeService implements IEmployeeService {
                             FuramaController.employeeMenu();
                             break;
                     }
-                }while (true);
+                } while (true);
             }
         }
 

@@ -20,6 +20,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void add() {
+        boolean flag = true;
         do {
             System.out.println("Type of facility:" +
                     "\n 1. Add New Villa " +
@@ -39,10 +40,10 @@ public class FacilityService implements IFacilityService {
                     break;
                 case 4:
                     FuramaController.facilityMenu();
+                    flag = false;
                     break;
             }
-
-        } while (true);
+        } while (flag);
 
     }
 
