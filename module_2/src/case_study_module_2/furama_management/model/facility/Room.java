@@ -29,7 +29,6 @@ public class Room extends Facility{
     }
 
     public String toCSV(){
-        return  super.getServiceName() + "," + super.getUsingArea() +"," + super.getRentalPrice() +"," +super.getPersonLimit() +"," +
-                super.getTypeOfRental() +"," + freeServiceInclude;
+        return  serviceName+","+usingArea+","+rentalPrice+","+personLimit+","+typeOfRental+","+freeServiceInclude;
     }
 }

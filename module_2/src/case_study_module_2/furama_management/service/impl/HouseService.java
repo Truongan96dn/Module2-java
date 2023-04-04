@@ -1,7 +1,7 @@
 package case_study_module_2.furama_management.service.impl;
 
 import case_study_module_2.furama_management.model.facility.House;
-import case_study_module_2.furama_management.model.facility.Villa;
+import case_study_module_2.furama_management.repository.impl.HouseRepo;
 import case_study_module_2.furama_management.service.IHouseService;
 import case_study_module_2.furama_management.utils.FacilityValidate;
 
@@ -11,17 +11,13 @@ import java.util.Scanner;
 
 public class HouseService implements IHouseService {
     Scanner scanner = new Scanner(System.in);
+    HouseRepo houseRepo = new HouseRepo();
     static Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
-
-    static {
-        houseIntegerMap.put((new House("SV01-house1", 70, 4000, 4, "month", "twin", 2)), 1);
-        houseIntegerMap.put((new House("SV02-house1", 70, 500, 4, "day", "king", 2)), 6);
-    }
-
     @Override
     public void display() {
+        houseIntegerMap=houseRepo.getAll();
         for (House h : houseIntegerMap.keySet()) {
-            System.out.println(h);
+            System.out.println(h+"value="+houseIntegerMap.get(h));
         }
     }
 
@@ -33,6 +29,7 @@ public class HouseService implements IHouseService {
         int personLimit;
         String typeofRental;
         String roomStandard;
+        int numberOfFloor;
         do {
             System.out.println("Input new House service Name (SVHO-XXXX) : ");
             serviceName = scanner.nextLine();
@@ -57,12 +54,14 @@ public class HouseService implements IHouseService {
             System.out.println("Input room standard");
             roomStandard = scanner.nextLine();
         } while (!FacilityValidate.checkTypeOfRentalAndRoomStandard(roomStandard));
-        System.out.println("Input number of floor");
-        int numberOfFloor = Integer.parseInt(scanner.nextLine());
+        do{
+            System.out.println("Input number of floor");
+            numberOfFloor = Integer.parseInt(scanner.nextLine());
+        }while (!FacilityValidate.checkFloor(numberOfFloor));
         House house = new House(serviceName, usingArea, rentalPrice, personLimit, typeofRental, roomStandard, numberOfFloor);
-        houseIntegerMap.put(house, 1);
+        Integer value = 1;
+        houseRepo.add(house,value);
     }
-
     @Override
     public void displayMaintenance() {
         boolean flag = true;

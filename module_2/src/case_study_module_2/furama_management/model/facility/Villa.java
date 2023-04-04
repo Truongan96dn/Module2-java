@@ -34,6 +34,8 @@ public class Villa extends House{
     }
 
     public String toCsv(){
-        return super.getServiceName()+","+super.roomStandard+","+super.getTypeOfRental()+","+super.getRentalPrice()+","+super.getPersonLimit()+","+super.getUsingArea()+","+super.getNumberOfFloors()+","+swimmingPoolArea;
+        return serviceName+","+usingArea+","+rentalPrice+","+
+                personLimit+","+typeOfRental+","+
+                roomStandard+","+numberOfFloors+","+swimmingPoolArea;
     }
 }

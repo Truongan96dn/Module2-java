@@ -2,6 +2,7 @@ package case_study_module_2.furama_management.service.impl;
 
 import case_study_module_2.furama_management.model.facility.Room;
 import case_study_module_2.furama_management.model.facility.Villa;
+import case_study_module_2.furama_management.repository.impl.RoomRepo;
 import case_study_module_2.furama_management.service.IRoomService;
 import case_study_module_2.furama_management.utils.FacilityValidate;
 
@@ -11,18 +12,14 @@ import java.util.Scanner;
 
 public class RoomService implements IRoomService {
     Scanner scanner = new Scanner(System.in);
-    static Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
-
-    static {
-        roomIntegerMap.put(new Room("SV03-room1", 30, 400, 2, "day", "MorningBreakFast"), 1);
-
-    }
+    RoomRepo roomRepo = new RoomRepo();
+    static Map<Room,Integer> roomIntegerMap = new LinkedHashMap<>();
 
     public void display() {
-        for (Room r : roomIntegerMap.keySet()) {
-            System.out.println(r);
+        roomIntegerMap=roomRepo.getAll();
+        for (Room v:roomIntegerMap.keySet()) {
+            System.out.println(v + "value="+roomIntegerMap.get(v));
         }
-
     }
 
     @Override
@@ -56,8 +53,9 @@ public class RoomService implements IRoomService {
         } while (!FacilityValidate.checkTypeOfRentalAndRoomStandard(typeofRental));
         System.out.println("Input new Free Service");
         String freeSer = scanner.nextLine();
-        Room room = new Room(serviceName, usingArea, rentalPrice, personLimit, typeofRental, freeSer);
-        roomIntegerMap.put(room, 1);
+        Room room = new Room(serviceName,usingArea,rentalPrice,personLimit,typeofRental,freeSer);
+        Integer value = 1;
+        roomRepo.add(room,value);
     }
 
     @Override

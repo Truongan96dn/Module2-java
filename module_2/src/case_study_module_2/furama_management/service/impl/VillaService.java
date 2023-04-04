@@ -1,6 +1,7 @@
 package case_study_module_2.furama_management.service.impl;
 
 import case_study_module_2.furama_management.model.facility.Villa;
+import case_study_module_2.furama_management.repository.impl.VillaRepo;
 import case_study_module_2.furama_management.service.IVillaService;
 import case_study_module_2.furama_management.utils.FacilityValidate;
 
@@ -11,17 +12,14 @@ import java.util.Scanner;
 public class VillaService implements IVillaService {
     boolean flag = true;
     Scanner scanner = new Scanner(System.in);
-    static Map<Villa, Integer> villaIntegerMap = new LinkedHashMap<>();
-
-    static {
-        villaIntegerMap.put(new Villa("SV02-villa1", 100, 5000, 7, "week", "kingBed", 1, 25), 1);
-        villaIntegerMap.put(new Villa("SV03-villa1", 200, 10000, 7, "month", "QueenBed", 2, 70), 5);
-    }
+    VillaRepo villaRepo=new VillaRepo();
+    static Map<Villa,Integer> villaIntegerMap = new LinkedHashMap<>();
 
     @Override
     public void display() {
-        for (Villa v : villaIntegerMap.keySet()) {
-            System.out.println(v);
+        villaIntegerMap=villaRepo.getAll();
+        for (Villa v:villaIntegerMap.keySet()) {
+            System.out.println(v + "value= "+villaIntegerMap.get(v));
         }
     }
 
@@ -34,6 +32,7 @@ public class VillaService implements IVillaService {
         int personLimit;
         String typeofRental;
         String roomStandard;
+        int numberOfFloor;
         do {
             System.out.println("Input new Villa service Name (SVVL-XXXX) : ");
             serviceName = scanner.nextLine();
@@ -58,26 +57,23 @@ public class VillaService implements IVillaService {
             System.out.println("Input room standard");
             roomStandard = scanner.nextLine();
         } while (!FacilityValidate.checkTypeOfRentalAndRoomStandard(roomStandard));
-        System.out.println("Input number of floor");
-        int numberOfFloor = Integer.parseInt(scanner.nextLine());
+        do{
+            System.out.println("Input number of floor");
+            numberOfFloor = Integer.parseInt(scanner.nextLine());
+        }while (!FacilityValidate.checkFloor(numberOfFloor));
         do {
             System.out.println("Input swimming pool area >30m2 : ");
             swimArea = Integer.parseInt(scanner.nextLine());
         } while (!FacilityValidate.checkUsingAreaAndPoolArea(swimArea));
-        Villa villa = new Villa(serviceName, usingArea, rentalPrice, personLimit, typeofRental, roomStandard, numberOfFloor, swimArea);
-        villaIntegerMap.put(villa, 1);
+        Villa villa = new Villa(serviceName,usingArea,rentalPrice,personLimit,typeofRental,roomStandard,numberOfFloor,swimArea);
+        Integer value = 0 ;
+        villaRepo.add(villa,value);
     }
-
-    @Override
-    public void edit() {
-
-    }
-
     @Override
     public void displayMaintenance() {
-        for (Integer v : villaIntegerMap.values()) {
+        for (Integer v : villaRepo.getAll().values()) {
             if (v >= 5) {
-                System.out.println("Facility needs to maintenance !" + villaIntegerMap.keySet());
+                System.out.println("Facility needs to maintenance !" + villaRepo.getAll().values());
                 flag = false;
             }
         }

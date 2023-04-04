@@ -1,8 +1,8 @@
 package case_study_module_2.furama_management.model.person;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String staffID;
-    private String education ;
+    private String education;
     private String position;
     private int salary;
 
@@ -48,24 +48,28 @@ public class Employee extends Person{
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "staffID='" + staffID + '\'' +
-                ", education='" + education + '\'' +
-                ", position='" + position + '\'' +
-                ", salary=" + salary +
-                ", name='" + name + '\'' +
-                ", dayOfBirth='" + dayOfBirth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", personID=" + personID +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+        return "EmployeeID=" + staffID + "," + super.getPersonID() + "," +
+                super.getDayOfBirth() + "," + super.getGender() +
+                "," + super.getPhoneNumber() + "," + super.getEmail() +
+                "," + super.getName() + "," + education + "," + position + "," + salary;
     }
 
     public String toCSV() {
-        return super.getName() + "," + super.getPersonID() +"," +
-                super.getDayOfBirth() +"," + super.getGender() +
+        return "EmployeeID=" + staffID + "," + super.getPersonID() + "," +
+                super.getDayOfBirth() + "," + super.getGender() +
                 "," + super.getPhoneNumber() + "," + super.getEmail() +
-                "," + staffID +"," + education +"," + position +"," + salary;
+                "," + super.getName() + "," + education + "," + position + "," + salary;
     }
 }
+//}return "Employee{" +
+//        "staffID='" + staffID + '\'' +
+//        ", education='" + education + '\'' +
+//        ", position='" + position + '\'' +
+//        ", salary=" + salary +
+//        ", name='" + name + '\'' +
+//        ", dayOfBirth='" + dayOfBirth + '\'' +
+//        ", gender='" + gender + '\'' +
+//        ", personID=" + personID +
+//        ", phoneNumber=" + phoneNumber +
+//        ", email='" + email + '\'' +
+//        '}';

@@ -1,12 +1,11 @@
 package case_study_module_2.furama_management.service;
 
-public interface IVillaService extends IFacilityService{
-    @Override
+import case_study_module_2.furama_management.model.facility.Villa;
+
+import java.util.Map;
+
+public interface IVillaService {
     void display();
-
-    @Override
     void add();
-
-    @Override
     void displayMaintenance();
 }

@@ -38,22 +38,25 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerID=" + customerID +
-                ", typeOfCustomer='" + typeOfCustomer + '\'' +
-                ", address='" + address + '\'' +
-                ", name='" + name + '\'' +
-                ", dayOfBirth='" + dayOfBirth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", personID=" + personID +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+        return "customerID=" + customerID + "," + super.getPersonID() + "," + super.getDayOfBirth() + "," +
+                super.getGender() + "," + super.getPhoneNumber() + "," + super.getEmail() + "," +
+                super.getName() + "," + typeOfCustomer + "," + address;
     }
 
-    public String toCSV(){
-        return super.getName() +","+ super.getPersonID() + "," + super.getDayOfBirth() + "," +
-                super.getGender() + "," + super.getPhoneNumber() +","+ super.getEmail() +","+
-                customerID + "," + typeOfCustomer + "," + address;
+    public String toCSV() {
+        return "customerID=" + customerID + "," + super.getPersonID() + "," + super.getDayOfBirth() + "," +
+                super.getGender() + "," + super.getPhoneNumber() + "," + super.getEmail() + "," +
+                super.getName() + "," + typeOfCustomer + "," + address;
     }
 }
+//"Customer{" +
+//        "customerID=" + customerID +
+//        ", typeOfCustomer='" + typeOfCustomer + '\'' +
+//        ", address='" + address + '\'' +
+//        ", name='" + name + '\'' +
+//        ", dayOfBirth='" + dayOfBirth + '\'' +
+//        ", gender='" + gender + '\'' +
+//        ", personID=" + personID +
+//        ", phoneNumber=" + phoneNumber +
+//        ", email='" + email + '\'' +
+//        '}';

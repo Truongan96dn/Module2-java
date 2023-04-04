@@ -43,6 +43,6 @@ public class House extends Facility {
     }
 
     public String toCsv() {
-        return super.getServiceName() + "," + super.getTypeOfRental() + "," + super.getRentalPrice() + "," + super.getPersonLimit() + "," + super.getUsingArea() + "," + roomStandard + "," + numberOfFloors;
+        return serviceName+","+usingArea+","+rentalPrice+","+personLimit+","+typeOfRental+","+roomStandard+","+numberOfFloors;
     }
 }
